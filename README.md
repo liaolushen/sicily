@@ -1,2 +1,2 @@
-# sicily
-my exercise in soj.sysu.edu.cn
+# Sicily
+my exercise in [Sicily](http://soj.sysu.edu.cn/)
