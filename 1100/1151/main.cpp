@@ -15,7 +15,7 @@ struct Node {
     }
 };
 
-bool isVisit[40320];　// 是否已经遍历的记录
+bool isVisit[40320];// 是否已经遍历的记录
 
 // 阶乘
 int factorial(int n) {
@@ -68,26 +68,26 @@ void operationC(int origin[], int result[]) {
 int main() {
     int N;
     while (cin >> N && N != -1) {
-        memset(isVisit, false, sizeof(isVisit));　// isVisit全部初始化为false
-        queue<Node> v;　// 使用队列来进行BFS
+        memset(isVisit, false, sizeof(isVisit));// isVisit全部初始化为false
+        queue<Node> v;// 使用队列来进行BFS
         int targetMagic[8];
         for (int i = 0; i < 8; ++i) {
             cin >> targetMagic[i];
         }
-        int target = cantor(targetMagic); // 获取目标状态的康托展开值
-        int beginMagic[8] = {1, 2, 3, 4, 8, 7, 6, 5};　// 初始状态
+        int target = cantor(targetMagic);// 获取目标状态的康托展开值
+        int beginMagic[8] = {1, 2, 3, 4, 8, 7, 6, 5};// 初始状态
         v.push(Node("", beginMagic));
         isVisit[cantor(beginMagic)] = true;
 
         // Begin BFS
         while (!v.empty()) {
-            if (cantor(v.front().magic) == target || v.front().op.size() > N) break;　// 如果得出结果或者已超过Ｎ的值，跳出循环
+            if (cantor(v.front().magic) == target || v.front().op.size() > N) break;// 如果得出结果或者已超过Ｎ的值，跳出循环
             int num[8];
 
             operationA(v.front().magic, num);
             if (!isVisit[cantor(num)]) {
-                v.push(Node(v.front().op+"A", num));　// 如果未遍历到这个值，则将其放入队列
-                isVisit[cantor(num)] = true; // 设置已经遍历
+                v.push(Node(v.front().op+"A", num));// 如果未遍历到这个值，则将其放入队列
+                isVisit[cantor(num)] = true;// 设置已经遍历
             }
 
             operationB(v.front().magic, num);
